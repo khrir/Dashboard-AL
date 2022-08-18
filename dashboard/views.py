@@ -27,7 +27,7 @@ def relatorio_despesas_categoria_economica(request):
     data = []
     for despesa in despesas_categoria_economica:
         label.append(despesa.nome)
-        data.append(despesa.total)
+        data.append(despesa.custeio)
 
     x = list(zip(label, data))
 
@@ -42,7 +42,7 @@ def relatorio_despesas_favorecidos(request):
     data = []
     for despesa in despesas_favorecidos:
         label.append(despesa.nome)
-        data.append(despesa.custeio)
+        data.append(despesa.total)
 
     x = list(zip(label, data))
 
