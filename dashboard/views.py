@@ -26,15 +26,25 @@ def relatorio_despesas_categoria_economica(request):
     label = []
     data = []
     for despesa in despesas_categoria_economica:
-        label.append(despesa.nome)
-        data.append(despesa.custeio)
-
+        if despesa.nome == "SECRETARIA DE ESTADO DA EDUCAÇÃO":
+            label.append(despesa.nome)
+            data.append(despesa.custeio)
+        elif despesa.nome == "SECRETARIA DE ESTADO DA COMUNICAÇÃO":
+            label.append(despesa.nome)
+            data.append(despesa.custeio)
+        elif despesa.nome == "SECRETARIA DE ESTADO DA SAÚDE":
+            label.append(despesa.nome)
+            data.append(despesa.custeio)
+        elif despesa.nome == "SECRETARIA DE ESTADO DA SEGURANÇA PÚBLICA":
+            label.append(despesa.nome)
+            data.append(despesa.custeio)
+        
     x = list(zip(label, data))
 
     x.sort(key=lambda x: x[1], reverse=True)
     x = list(zip(*x))
-    
-    return JsonResponse({'labels': x[0][:10], 'data': x[1][:10]})
+
+    return JsonResponse({'labels': x[0][:4], 'data': x[1][:4]})
 
 def relatorio_despesas_favorecidos(request):
     despesas_favorecidos = Despesas_favorecidos.objects.all()
